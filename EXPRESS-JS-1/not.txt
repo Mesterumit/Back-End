@@ -1,0 +1,77 @@
+-- express is micro-framework for NodeJs
+-- with express can devolop fast and stable 
+web-apps or api-serfvices, even another framework
+
+
+--HTTP
+HTTP is the most important part of any application which 
+communicates with the server. Most of the frontend
+ applications need to communicate with the backend services
+  over the HTTP protocol. 
+
+== HTTP VS HTTPS==
+-- HTTPS is more secure, it is encripted
+
+  HTTP Request (Header + Method)
+
+  -- JSON --> Java Script Objcet Notation(String) but it represnet an object
+  -- data type of (JSON) is a "String"
+
+ == HTTPS://www. example.com/dir/:name/more?id==123 
+
+-- HTTPS --> PROTOCOL AND SECURE IF HTTPS
+-- www   --> subdomain
+-- example --> hostname
+-- /dir/   --> baseUrl/end-point
+-- :name  --> parameter
+-- ?      --> the "?" mark represent query 
+-- if you dont include the query , it is call "PATH"
+ -- from baseUrl to query call as "originalUrl" 
+
+
+====BACK-END TASKS===
+  -- who is making the Request --> Authentication
+  -- Checking the permision    --> Authorization
+  -- Validation --> when u do "POST" OR any other request 
+  you need to do Validation if the data the one coming if "string"
+   or are u expecting an object.
+
+-- CRUD OPERATION --> creating dnew data, deleting data, updating data ...
+
+
+=== DATA BASES === 
+
+   -PostreSQL
+   -MySQL
+   -MongoDB --> NON relational DATABASE
+
+
+=== REST API --> before rest api , wasusing the "SOAP" API
+but today REST API is the most populer one
+
+== MVC --> Model View Controller 
+
+
+       DATA-BASE  (we DOnt use the DATABASE directly 
+             we are using the MODEL)
+          | ^
+          | |
+          ^          
+          MODEL(while generate the VIEW ,MOdel represent datase) <====>   Controller <===>  View (it is a function and generate the output in the end)
+                                                                              ^ |                  
+                                                                              | ^
+                                                                             CLIENT 
+
+
+===  ROUTES -->  we may have a differnt end points
+            --> Controller --> identify the routes 
+            --> and send this request to View function 
+            and generate the response if it JSON DATA, TEMPLATE 
+            --> IT REACH TO MODELS 
+
+
+=== 100 --> info messages
+=== 200 --> success
+=== 300 --> redirection
+=== 400 ---> client error
+=== 500 --> server error
