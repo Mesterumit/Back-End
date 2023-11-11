@@ -12,8 +12,13 @@ app.get('/',(req,res)=>{
     res.send('Hello Mongoose')
 })
 
+// Routes
+app.use('/api',require('./routes/blog.js'))
+// console.log("blog",require('./routes/blog.js'))
+
 //Express Error Hnadler (Custom)
 app.use(require('./middlewares/errorHandlers.js'))
+
 app.listen(PORT,()=>{
     console.log(`Server is running on PORT:${PORT} `)
 })

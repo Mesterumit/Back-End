@@ -2,15 +2,32 @@ require('express-async-errors')
 const Category = require('../models/Category')
 
 // HTTP - /categories
-exports.getCategories = async(req,res)=>{
-    const data = await Category.find()
-    res.status(200).json({
-        success :true,
-        data:data,
-        count: data.length
-    })
+// exports.getCategories = async(req,res)=>{
+//     const data = await Category.find()
+//     res.status(200).json({
+//         success :true,
+//         data:data,
+//         count: data.length
+//     })
 
-}
+// }
+exports.getCategories = async (req, res) => {
+    try {
+        const data = await Category.find();
+        res.status(200).json({
+            success: true,
+            data: data,
+            count: data.length
+        });
+    } catch (error) {
+        console.error('Error fetching categories:', error);
+        res.status(500).json({
+            success: false,
+            error: 'Internal Server Error'
+        });
+    }
+};
+
 
 // POST -/categories
 exports.postCategory = async(req,res)=>{
