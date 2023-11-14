@@ -58,6 +58,8 @@ exports.register =async(req,res)=>{
     res.status(201).json({
         succes: true,
         data:user,
+       // it is sending the entire session object 
+        //as part of the JSON response to the client.
         session :req.session
     })
 

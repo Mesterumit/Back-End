@@ -14,10 +14,16 @@ const PostSchema = new Schema({
         // it is going to be "foreing key"
         ref: 'Category'
     },
+    user:{
+       required: true,
+       type:Schema.ObjectId,
+       ref: "User",
+
+    },
     title: {
         type: String,
         trim: true,
-        required: [true, 'Post title is required'] // corrected 'truw' to 'true'
+        required: [true, 'Post title is required'] 
     },
     content: {
         type: String,
