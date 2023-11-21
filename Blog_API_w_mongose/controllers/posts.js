@@ -12,7 +12,7 @@ exports.getPosts = async(req,res)=>{
     //     published:tru
 
     // }
-    console.log(res.results)
+    // console.log(res.results)
     // so when u use category "first parameter" will be the name of the 
     // key word in this exam , in post module "category"
     // the second parameter is the "name " which we have in category module
@@ -27,8 +27,8 @@ exports.getPosts = async(req,res)=>{
 exports.postPosts = async(req,res)=>{
 
     // this line is gonna show the user "id" in each pot
-    // so we are getting it from "seession.storage",
-    // because when we create a user , we save it's id in session storage
+    // so we are getting it from "seession",
+    // because when we create a user , we save it's id in session 
     // req.body.user: This is assigning the value of 
     //req.session.user._id to req.body.user.
     // It implies that the user ID is being attached to 

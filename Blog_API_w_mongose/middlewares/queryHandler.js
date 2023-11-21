@@ -29,8 +29,9 @@ const query =(model,populate)=>async(req,res,next)=>{
         // inside of the query as paramater
         search[key] = {$regex:search[key], $options:'i'}
         console.log(search)
-        let query = model.find(search).populate(populate)
-
+        let query =  model.find(search).populate(populate)
+        
+        console.log(query)
         //--------------------
         // Select Functionaltiy
         //------------------
