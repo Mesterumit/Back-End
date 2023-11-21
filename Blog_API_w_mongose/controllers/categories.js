@@ -12,20 +12,17 @@ const Category = require('../models/Category')
 
 // }
 exports.getCategories = async (req, res) => {
-    try {
-        const data = await Category.find();
-        res.status(200).json({
-            success: true,
-            data: data,
-            count: data.length
-        });
-    } catch (error) {
-        console.error('Error fetching categories:', error);
-        res.status(500).json({
-            success: false,
-            error: 'Internal Server Error'
-        });
-    }
+    
+        // const data = await Category.find();
+        res.status(200).json(res.results)
+        
+        // res.status(200).json({
+        //     success: true,
+        //     data: data,
+        //     count: data.length
+        // });
+      
+    
 };
 
 

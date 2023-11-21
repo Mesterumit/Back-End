@@ -4,12 +4,9 @@ const User = require('../models/User')
 // @desc     List all users
 // @access   Admin
 exports.list = async(req,res)=>{
-    const data = await User.find()
-    res.status(200).json({
-        succes:true, 
-        data:data,
-        count: data.length
-    })
+    // const data = await User.find()
+    console.log('here')
+    res.status(200).json(res.results)
 }
 
 
