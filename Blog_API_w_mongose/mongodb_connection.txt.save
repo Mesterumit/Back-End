@@ -1,4 +1,4 @@
 Connection string: 
-mongodb://mesterumit:Karaagac52@localhost:8080/test
-Database name: test
+mongodb://mesterumit:Karaagac52@localhost:8080/blog
+Database name: blog
 
