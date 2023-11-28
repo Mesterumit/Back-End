@@ -46,6 +46,7 @@ exports.postPosts = async(req,res)=>{
      // i will replace that name with "name"
      // category._id ==> is an object, so dont need to convert "toString"
      req.body.category = category._id
+     console.log(category)
     const data = await Post.create(req.body)
     res.status(201).json({
         succes:true,

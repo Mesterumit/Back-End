@@ -6,6 +6,8 @@ const express = require('express')
 const connectDB = require('./db')
 const morgan = require('morgan')
 const session = require('cookie-session')
+const mongoSanitize = require('express-mongo-sanitize')
+const {rateLimit} = require('express-rate-limit')
 
 const app = express()
 require('dotenv').config()
@@ -30,6 +32,25 @@ app.use(morgan('dev'))
 //IN THAT WAY WE CAN ACCESS THE "req.session" and u can store anything inside of it
 // it is a middleware 
 app.use(session({secret:process.env.SECRET})) 
+
+//Security Middleware
+// Sanitize Data
+app.use(mongoSanitize())
+// set security headers
+app.use(require('helmet')())
+// XSS Attacks for headers
+app.use(require('xss-clean')())
+//HTTP Param polutuion attack
+app.use(require('hpp')())
+// Rate limiting
+const limiter = rateLimit({
+	windowMs: 15 * 60 * 1000, // 15 minutes
+	limit: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes).
+	standardHeaders: 'draft-7', // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
+	legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
+	// store: ... , // Use an external store for consistency across multiple server instances.
+})
+app.use(limiter)
 
 
 app.get('/',(req,res)=>{
