@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const tasks = require('../controllers/Tasks')
+const tasks = require('../controllers/Task')
 
 
 router.route('/')

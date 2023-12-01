@@ -30,7 +30,8 @@ const Update = ({ tasks, setTasks, axios }) => {
     const updatedTasks = tasks.map((item) => {
       if (item.id === id) {
         return {
-          ...item,
+          ...item, status
+          
           title: updateTitle,
           description: updateDescription,
           priorty: updatePriorty,

@@ -7,6 +7,10 @@
 import {useState} from 'react'
 import axios from 'axios'
 // import {useRef} from 'react'
+import update from './Update'
+// import { Link } from 'react-router-dom';
+import {useNavigate,useParams} from  'react-router-dom'
+
 
 
 
@@ -15,10 +19,19 @@ const Form = ({tasks,setTasks}) =>{
     const [description, setDescription] = useState('')
     const [priorty,setPriorty] = useState()
     // const myInputRef = useRef()
+    const navigate = useNavigate()
+    const {id} = useParams()
+
+    const handleUpdateClick =(id)=>{
+        navigate(`/update/${id}`)
+    }
+    
     
     const submitHandler = async(e)=>{
 
-        e.preventDefault()
+        // if u do "e.preventDefault()" you can't see the outcome in browser
+        // you can see tham in "db"
+        // e.preventDefault()
         // the first parameter is the "url" , I just created for back-end
         // second paramater is the "body", the one i have in models
         const res = await axios.post('http://localhost:8080',{title,description,priorty})
@@ -26,7 +39,8 @@ const Form = ({tasks,setTasks}) =>{
 
     }
 
-    const handleDelete = (id)=>{
+    const handleDelete = async (id) =>{
+
         // if u get an "index" from "li" item
         // then we need to do it in that way
         // in this function "index" will be instead of "id"
@@ -35,8 +49,17 @@ const Form = ({tasks,setTasks}) =>{
         // updatedTasks.splice(index,1);
 
         // this on wis the second way of doing it with "id"
-        const updatedTasks = tasks.filter((task)=> task.id !== id)
-        setTasks(updatedTasks)
+   
+        try{
+            
+             await axios.delete(`http://localhost:8080/${id}`)
+
+            const updatedTasks = tasks.filter((task)=> task.id !== id)
+            setTasks(updatedTasks)
+
+        }catch(error){
+            console.log(error.message)
+        }
     }
 
     console.log('component re-rendered')
@@ -108,27 +131,63 @@ const Form = ({tasks,setTasks}) =>{
           
 
         </form>
-        <ul className="flex-column" style={{padding:'2px'}}>
+        <div  >
+            <table  className="table table-bordered border-primary mt-5">
+        <thead>
+    <tr className='table-info'>
+      <th scope="col">Priorty</th>
+      <th scope="col">Task Title</th>
+      <th scope="col">Task Description</th>
+      <th scope="col" >Update</th>
+      <th scope="col" >Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+        
     {tasks.map((item, index) => {
         return (
-            <div  key={index} style={{padding:'2px'}}>
-                <li key={index}  style={{width:'300px',display: 'flex', border:'2px solid gray'}}>
-                    {item.title}
-                    <button style={{marginLeft:'auto'}}
-                    onClick={()=>handleDelete(item.id)}
-                    >Delete</button>
-                    <button stye={{margin:'2px'}}
-                    >Update</button>
-                </li>
-            </div>
+        
+    <tr key={index} className='table-light'>
+      <th scope="row">{item.priorty}</th>
+      <td>{item.title}</td>
+      <td>{item.description}</td>
+      <td style={{width:'10px'}}>
+      <button type="button" className="btn btn-success" onClick={()=>handleUpdateClick(item.id)} style={{ margin: '2px' }}>Update</button>
+      </td>
+      <td style={{width:'10px'}}>
+      <button type="button" className="btn btn-danger" onClick={()=> handleDelete(item.id)} style={{ margin: '2px' }}>Delete</button>
+      </td>
+    </tr>
+   
         );
     })}
-</ul>
-
-       
-    </div>
+    </tbody>
+    
+           </table>
+           
+           </div>
+          
+ 
+ </div>
 
     )
+    
 }
 
 export default Form;
+{/* <div  key={index} style={{padding:'2px'}}>
+<li key={index}  style={{width:'300px',display: 'flex', border:'2px solid gray'}}>
+    {item.title}
+    <button style={{marginLeft:'auto'}}
+    onClick={()=>handleDelete(item.id)}
+    >Delete</button>
+
+      
+      
+    
+
+    
+    
+</li>
+
+</div> */}

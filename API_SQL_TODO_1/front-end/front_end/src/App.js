@@ -1,8 +1,10 @@
 
 import Navbar from "./components/NavBar.jsx";
 import Form  from './components/Form.jsx'
+import Update from './components/Update'
 import axios from 'axios'
 import {useEffect, useState} from 'react'
+import { Route, Routes } from 'react-router-dom';
 function App() {
   
   const [tasks,setTasks] =useState([])
@@ -20,11 +22,13 @@ function App() {
   }
   console.log("tasks :",tasks)
   return (
-    <div>
-
-     <Navbar />
-     <Form tasks={tasks} setTasks={setTasks}/>
-    </div>
+    <>
+    <Navbar />
+    <Routes>
+      <Route path='/' element={<Form    tasks={tasks}  setTasks={setTasks}/> } />
+      <Route path='/update/:id' element={<Update tasks={tasks} setTasks={setTasks} axios={axios} />} />
+    </Routes>
+     </>
   );
 }
 

@@ -1,28 +1,12 @@
 const ErrorResponse = require('../utils/ErrorResponse')
 const User = require('../models/User')
 //const {hash, genSalt} = require(bcryptjs)
-const {validationResult} = require('express-validator')
 
 // @URL POST /api/auth/login
 // @desc Login a User
 // @Access Public
 exports.login =async(req,res)=>{
     
-    // it is coming from "express-validation" documentry
-    // all of these code are coming from "express-validator"
-    const results = validationResult(req)
-    if(!results.isEmpty()){
-        // so result is an object 
-        // i am getting the "errors" from results object
-        let {errors} = results;
-        // in here making them as strings
-        // where i have created in validation as message
-        // so i can see them as string by "," in postman
-        erros = errors.map(err => err.msg).jin(' , ')
-        throw new ErrorResponse(422, errors) 
-    }
-
-    console.log(result)
     // Find the user in DB
     // findOne will give u back an object
     const user = await User.findOne({email:req.body.email})
@@ -66,8 +50,10 @@ exports.register =async(req,res)=>{
     // req.body.password = hashedPassword;
 
     const user = await User.create(req.body)
+    //stored the entire user object in the 
+    //session during the login or registration process:
     //Login the user
-    req.session.user = user;
+     
     req.session.isLoggedIn = true;
 
     // send a response back
