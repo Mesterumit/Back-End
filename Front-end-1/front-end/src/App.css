@@ -1,0 +1,28 @@
+.App {
+  padding: 50px;
+  display:flex;
+  flex-direction:column;
+}
+
+form{
+  padding:10px;
+  display:flex;
+  flex-direction:column;
+  width: 50%;
+  margin: 20px auto;
+  text-align:center;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+input{
+  margin: 10px auto;
+  width: 50%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+#userFormContainer{
+  display:flex;
+}
