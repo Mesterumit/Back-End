@@ -1,0 +1,2 @@
+::1 - - [07/Dec/2023:05:58:09 +0000] "OPTIONS /users/ HTTP/1.1" 204 0 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 OPR/105.0.0.0"
+::1 - - [07/Dec/2023:05:58:09 +0000] "GET /users/ HTTP/1.1" 500 59 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 OPR/105.0.0.0"

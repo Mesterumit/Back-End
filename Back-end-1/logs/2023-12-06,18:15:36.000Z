@@ -1,0 +1,6 @@
+::1 - - [06/Dec/2023:18:28:35 +0000] "GET /users/ HTTP/1.1" 500 59 "-" "PostmanRuntime/7.35.0"
+::1 - - [06/Dec/2023:18:31:25 +0000] "POST /auth/login HTTP/1.1" 200 818 "-" "PostmanRuntime/7.35.0"
+::1 - - [06/Dec/2023:18:31:30 +0000] "GET /users/ HTTP/1.1" 500 59 "-" "PostmanRuntime/7.35.0"
+::1 - - [06/Dec/2023:18:31:35 +0000] "GET /users HTTP/1.1" 500 59 "-" "PostmanRuntime/7.35.0"
+::1 - - [06/Dec/2023:19:49:56 +0000] "POST /auth/login HTTP/1.1" 200 818 "-" "PostmanRuntime/7.35.0"
+::1 - - [06/Dec/2023:19:50:32 +0000] "GET /users HTTP/1.1" 500 59 "-" "PostmanRuntime/7.35.0"
