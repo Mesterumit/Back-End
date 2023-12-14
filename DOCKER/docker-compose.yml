@@ -1,0 +1,52 @@
+
+version: "3.9"
+
+# every services will be a container 
+services:
+  frontend:
+    build:
+      context: ./frontend
+    depends_on:
+      - backend
+    ports:
+      - 80:5173  
+    restart: on-failure    
+
+  backend:
+    build: 
+      context: ./backend
+    depends_on: 
+      - mongodb
+    ports:
+      - 8000:8000  
+    volumes:
+      - /PWD/backend/logs:/backend/logs    
+    restart: on-failure  
+  
+  mongodb:
+    image: mongo
+    ports:
+      - 27017:27017
+    restart: on-failure    
+
+
+
+#  in order to run(create) the compose file
+# docker compose up
+#  to delete
+#  docker compose down
+
+#  if we have any cahange 
+# docker compose up --build
+
+# before removing we have to stop it 
+# ctrl+c
+
+# it will remove all container(clean up all the running containers)
+# docker compose down -v
+
+#  to delete only one image
+#  docker rmi "id of image"
+
+#  or cleane up all of them
+#  docker system prune -a
