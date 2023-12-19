@@ -1,0 +1,29 @@
+{%- include('../partials/Header') %}
+
+<!-- Categories -->
+<div class="py-1 mb-3 border-bottom container mt-5  mb-5">
+    <nav class="nav nav-underline justify-content-between">
+        {% for(let category of categories){ %}
+            <a class="nav-item nav-link" href="/post?filter[categoryId]={%=category._id %}"> {%=category.name %}</a>
+        {% } %}
+    </nav>
+</div>
+
+<div class="container">
+    <div class="row g-5">
+        {% if(user) { %}
+            <div class="text-end">
+                <a href="/post/create" class="btn btn-primary mx-2"> New Post</a>
+                <a href="/category/create" class="btn btn-warning mx-2"> New Category</a>
+            </div>
+        {% } %}
+
+    <!-- Blog Posts -->
+
+    {% if(!posts.length>0){ %}
+    <h3 class="text-center mt-5">
+        No Posts, Add one !
+    </h3>
+    {% } %}
+       
+</div>
